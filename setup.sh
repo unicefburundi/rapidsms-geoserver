@@ -8,8 +8,8 @@ POSTGIS_SQL_PATH=/usr/share/postgresql/9.1/contrib
 sudo -u postgres createdb  -E UTF8 template_postgis1 # Create the template spatial database.
 sudo -u postgres createlang  -d template_postgis1 plpgsql # Adding PLPGSQL language support.
 sudo -u postgres psql  -d postgres -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_postgis1';"
-sudo -u postgres psql  -d template_postgis1 -f $POSTGIS_SQL_PATH/postgis.sql # Loading the PostGIS SQL routines
-sudo -u postgres psql  -d template_postgis1 -f $POSTGIS_SQL_PATH/spatial_ref_sys.sql
+sudo -u postgres psql  -d template_postgis1 -f $POSTGIS_SQL_PATH/postgis-1.5/postgis.sql # Loading the PostGIS SQL routines
+sudo -u postgres psql  -d template_postgis1 -f $POSTGIS_SQL_PATH/postgis-1.5/spatial_ref_sys.sql
 sudo -u postgres psql  -d template_postgis1 -c "GRANT ALL ON geometry_columns TO PUBLIC;" # Enabling users to alter spatial tables.
 sudo -u postgres psql   -d template_postgis1 -c "GRANT ALL ON spatial_ref_sys TO PUBLIC;"
 
