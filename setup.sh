@@ -4,7 +4,7 @@
 
 #create a postgis spatial database template
 
-POSTGIS_SQL_PATH=/usr/share/postgresql/8.4/contrib
+POSTGIS_SQL_PATH=/usr/share/postgresql/9.1/contrib
 sudo -u postgres createdb  -E UTF8 template_postgis1 # Create the template spatial database.
 sudo -u postgres createlang  -d template_postgis1 plpgsql # Adding PLPGSQL language support.
 sudo -u postgres psql  -d postgres -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_postgis1';"
@@ -23,5 +23,5 @@ sudo -u postgres createdb   geoserver -T template_postgis1
 
 # load the shapefile
 #
-sudo -u postgres ogr2ogr -f  "PostgreSQL" -t_srs EPSG:900913 PG:"dbname=geoserver" Uganda_District2010/Uganda_districts2010.shp  -nlt multipolygon -nln Uganda_districts2010
+sudo -u postgres ogr2ogr -f  "PostgreSQL" -t_srs EPSG:900913 PG:"dbname=geoserver" Burundi_Adm2013/BDI_adm4.shp  -nlt multipolygon -nln BDI_adm4
 
