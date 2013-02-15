@@ -1,13 +1,13 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
         # Adding model 'PollData'
         db.create_table('geoserver_polldata', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -82,7 +82,6 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
-        
         # Removing unique constraint on 'BasicClassLayer', fields ['deployment_id', 'layer_id', 'district']
         db.delete_unique('geoserver_basicclasslayer', ['deployment_id', 'layer_id', 'district'])
 
