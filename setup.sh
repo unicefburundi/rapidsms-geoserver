@@ -23,5 +23,5 @@ sudo -u postgres createdb   geoserver -T template_postgis1
 
 # load the shapefile
 #
-sudo -u postgres ogr2ogr -f  "PostgreSQL" -t_srs EPSG:900913 PG:"dbname=geoserver user=postgres" Burundi_Adm2013/BDI_adm4/BDI_adm4.shp  -nlt multipolygon -nln BDI_adm4
+sudo -u postgres ogr2ogr -f  "PostgreSQL" -t_srs EPSG:900913 PG:"dbname=geoserver user=postgres" Burundi_Adm2013/BDI_adm4/BDI_adm1.shp  -nlt multipolygon -nln BDI_adm1
 
