@@ -16,7 +16,7 @@ SELECT b.wkb_geometry,
 	g.unknown,
 	g.uncategorized 
 FROM public.bdi_adm1 b, public.geoserver_polldata g 
-WHERE g.poll_id=591 AND g.deployment_id=1 AND b.name_1 = g.district
-GROUP BY g.district, g.deployment_id, g.poll_id, g.yes, g.no, g.unknown, g.uncategorized, b.id_0, b.iso, b.name_0, b.name_1, b.type_1, b.engtype_1 
+WHERE g.poll_id=%poll% AND g.deployment_id=%app% AND b.name_1 = g.district AND (g.yes <> 0 AND g.no <> 0 AND g.unknown <> 0)
+GROUP BY g.district, g.deployment_id, g.poll_id, g.yes, g.no, g.unknown, g.uncategorized, b.id_0, b.iso, b.name_0, b.name_1, b.type_1, b.engtype_1, b.wkb_geometry 
 ORDER BY b.name_1 DESC;
 
