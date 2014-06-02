@@ -22,7 +22,7 @@ def export_poll_data():
     
     root = Location.tree.root_nodes()[0]
     for p in Poll.objects.order_by('-pk')[0:9]:
-        log.info("[poll-export-task'] Starting to export poll [" + str(p.pk) + "] to GEOSERVER...")
+        print "[poll-export-task'] Starting to export poll [" + str(p.pk) + "] to GEOSERVER..."
         if p.categories.count():
             data = p.simple_responses_by_category(location=root)
             for loc, values in data.items():
@@ -55,6 +55,6 @@ def export_poll_data():
                     pd.description = description
                     pd.top_category = values[top_category_key]
                     pd.save()
-            log.info("[poll-export-task'] End poll [" + str(p.pk) + "] export to GEOSERVER...")
+            print "[poll-export-task'] End poll [" + str(p.pk) + "] export to GEOSERVER..."
         else:
             pass
